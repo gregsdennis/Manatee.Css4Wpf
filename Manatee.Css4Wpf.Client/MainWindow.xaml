@@ -1,0 +1,47 @@
+﻿<Window x:Class="Manatee.Css4Wpf.Client.MainWindow"
+		xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+		xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+		xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+		xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+		xmlns:css="clr-namespace:Manatee.Css4Wpf;assembly=Manatee.Css4Wpf"
+		mc:Ignorable="d"
+		Title="MainWindow" Height="350" Width="525">
+	<Window.Resources>
+		<Style x:Key="black-fill">
+			<Setter Property="Border.Background" Value="Black"/>
+			<Style.Triggers>
+				<Trigger Property="Border.IsMouseOver" Value="True">
+					<Setter Property="Border.Background" Value="Yellow"/>
+				</Trigger>
+			</Style.Triggers>
+		</Style>
+		<Style x:Key="green-border">
+			<Setter Property="Border.BorderBrush" Value="Green"/>
+			<Style.Triggers>
+				<Trigger Property="Border.IsMouseOver" Value="True">
+					<Setter Property="Border.BorderBrush" Value="White"/>
+				</Trigger>
+			</Style.Triggers>
+		</Style>
+		<Style x:Key="5px-border">
+			<Setter Property="Border.BorderThickness" Value="5px"/>
+		</Style>
+	</Window.Resources>
+	<Grid Background="Red">
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition/>
+			<ColumnDefinition/>
+		</Grid.ColumnDefinitions>
+		<Border Margin="20">
+			<Border.Style>
+				<css:Style>
+					<StaticResource ResourceKey="black-fill"/>
+					<StaticResource ResourceKey="green-border"/>
+					<StaticResource ResourceKey="5px-border"/>
+					<StaticResource ResourceKey="blue-fill"/>
+				</css:Style>
+			</Border.Style>
+		</Border>
+		<Border Grid.Column="1" Margin="20" Style="{css:Style 'blue-fill green-border 5px-border black-fill'}"/>
+	</Grid>
+</Window>
